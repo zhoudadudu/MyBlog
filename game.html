@@ -1,0 +1,53 @@
+<head>
+	<link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/press-start-2p" type="text/css" />
+
+	<link rel="stylesheet" href="style.css">
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+		integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+		crossorigin="anonymous" 
+		referrerpolicy="no-referrer">
+	</script>
+
+
+</head>
+
+<body>
+	<!-- gameWindow container div -->
+	<div id="gameWindow">
+		<!--health bar container div -->
+		<div id="healthBarContainer">
+
+			<!-- player container div -->
+			<!-- player health -->
+			<div id="playerHealthBackground">
+				<div id="playerBlood"></div>
+				<div id="playerHealthForeground"></div>
+			</div>
+
+			<!-- timer -->
+			<div id="timer">60</div>
+
+			<!-- enemy container div -->
+			<!-- enemy health -->
+			<div id="enemyHealthBackground">
+				<div id="enemyBlood"></div>
+				<div id="enemyHealthForeground"></div>
+			</div>
+		</div>
+
+		<div id="displayText">Tie</div>
+
+		<canvas></canvas>
+
+		<br>
+
+		<a href="index.html" style="display: flex; justify-content: center; font-size: 50px; text-decoration: none;">返回首页</a>
+
+	</div>
+
+	<script src="utils.js"></script>
+	<script src="classes.js"></script>
+	<script src="script.js"></script>
+</body>
