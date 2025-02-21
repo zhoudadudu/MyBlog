@@ -5,8 +5,9 @@
     }
 </style>
 
-<canvas></canvas>
 <a href="../index.html" style="display: flex; justify-content: center; font-size: 50px; text-decoration: none; color: white;">返回首页</a>
+
+<canvas></canvas>
 
 <script>
     const canvas = document.querySelector('canvas')
@@ -122,7 +123,6 @@
         ball.update()
     }
 
-    animate()
 
     addEventListener('keydown', (event) => {
         const speed = 5
@@ -148,4 +148,8 @@
                 break
         }
     })
+
+
+
+    animate();
 </script>
