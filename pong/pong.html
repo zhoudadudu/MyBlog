@@ -21,7 +21,7 @@
 
 <script>
     const canvas = document.querySelector('canvas')
-    const c = canvas.getContext('2d')
+    const context = canvas.getContext('2d')
 
     canvas.width = 768
     canvas.height = 512
@@ -38,8 +38,8 @@
         }
 
         draw() {
-            c.fillStyle = 'white'
-            c.fillRect(this.position.x, this.position.y, this.width, this.height)
+            context.fillStyle = 'white'
+            context.fillRect(this.position.x, this.position.y, this.width, this.height)
         }
 
         update() {
@@ -70,17 +70,17 @@
         }
 
         draw() {
-            c.fillStyle = 'white'
-            c.fillRect(this.position.x, this.position.y, this.width, this.height)
+            context.fillStyle = 'white'
+            context.fillRect(this.position.x, this.position.y, this.width, this.height)
         }
 
 
         update() {
             this.draw()
-            const rightSide = this.position.x + this.width + this.velocity.x
-            const leftSide = this.position.x + this.velocity.x
-            const bottomSide = this.position.y + this.height
-            const topSide = this.position.y
+            const rightSide = this.position.x + this.width + this.velocity.x//球右侧
+            const leftSide = this.position.x + this.velocity.x//球左侧
+            const bottomSide = this.position.y + this.height//球底部
+            const topSide = this.position.y//球顶部
 
             // 小球碰到左边球拍拍面
             if (leftSide <= paddle1.position.x + paddle1.width && bottomSide >= paddle1.position.y && topSide <= paddle1.position.y + paddle1.height) {
@@ -103,6 +103,7 @@
                 this.velocity.x = -this.velocity.x
             }
 
+            //球移动
             this.position.x += this.velocity.x
             this.position.y += this.velocity.y
         }
@@ -134,22 +135,18 @@
         const speed = 5
         switch (event.key) {
             case 'w':
-                //go up
                 paddle1.velocity.y = -speed
                 break
 
             case 's':
-                //go down
                 paddle1.velocity.y = speed
                 break
 
             case 'ArrowUp':
-                //go up
                 paddle2.velocity.y = -speed
                 break
 
             case 'ArrowDown':
-                //go down
                 paddle2.velocity.y = speed
                 break
         }
@@ -179,17 +176,17 @@
         }
     });
 
-    function animate() {
-        requestAnimationFrame(animate)
-        c.fillStyle = 'black'
-        c.fillRect(0, 0, canvas.width, canvas.height)
+    function mainLoop() {
+        requestAnimationFrame(mainLoop)
+        context.fillStyle = 'black'
+        context.fillRect(0, 0, canvas.width, canvas.height)
+
         paddle2.update()
         paddle1.update()
 
         ball.update()
     }
 
-
-    animate()
+    mainLoop()
 
 </script>
