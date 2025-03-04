@@ -78,8 +78,8 @@
             }
 
             //蛇吃食物
-            if (this.position.x == food.position.x && this.position.y == food.position.y) {
-                snakeBody.push([food.position.x, food.position.y])
+            if (this.position.x == food.x && this.position.y == food.y) {
+                snakeBody.push([food.x, food.y])
                 food.placeFood()
             }
             //更新蛇身位置
@@ -95,18 +95,19 @@
     }
 
     class Food {
-        constructor({ position }) {
-            this.position = position;
+        constructor(x, y) {
+            this.x = x
+            this.y = y
         }
 
         draw() {
             context.fillStyle = "red"
-            context.fillRect(this.position.x, this.position.y, blockSize, blockSize)
+            context.fillRect(this.x, this.y, blockSize, blockSize)
         }
 
         placeFood() {
-            this.position.x = Math.floor(Math.random() * cols) * blockSize
-            this.position.y = Math.floor(Math.random() * rows) * blockSize
+            this.x = Math.floor(Math.random() * cols) * blockSize
+            this.y = Math.floor(Math.random() * rows) * blockSize
         }
     }
 
@@ -174,6 +175,7 @@
         if (gameOver) {
             return
         }
+        
         context.fillStyle = "black"
         context.fillRect(0, 0, canvas.width, canvas.height)
 
@@ -191,12 +193,7 @@
     })
 
     //食物位置初始化
-    const food = new Food({
-        position: {
-            x: Math.floor(Math.random() * cols) * blockSize,
-            y: Math.floor(Math.random() * rows) * blockSize
-        }
-    })
+    const food = new Food(Math.floor(Math.random() * cols) * blockSize, Math.floor(Math.random() * rows))
 
     //蛇身初始化
     var snakeBody = [[snake.position.x, snake.position.y]]
