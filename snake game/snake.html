@@ -24,6 +24,7 @@
     var blockSize = 25;
     var rows = 20;
     var cols = 20;
+    var gameOver = false;
 
     const canvas = document.querySelector('canvas')
     const context = canvas.getContext('2d')
@@ -31,13 +32,9 @@
     canvas.width = cols * blockSize;
     canvas.height = rows * blockSize;
 
-    var gameOver = false;
-
     class Snake {
         constructor({ position }) {
-
             this.position = position;
-
             this.velocity = {
                 x: 0,
                 y: 0
@@ -79,11 +76,10 @@
                 }
             }
 
-
             //蛇吃食物
-            if (this.position.x == foodX && this.position.y == foodY) {
-                snakeBody.push([foodX, foodY])
-                placeFood()
+            if (this.position.x == food.position.x && this.position.y == food.position.y) {
+                snakeBody.push([food.position.x, food.position.y])
+                food.placeFood()
             }
             //更新蛇身位置
             for (let i = snakeBody.length - 1; i > 0; i--) {
@@ -94,30 +90,28 @@
                 snakeBody[0] = [this.position.x, this.position.y];
             }
 
-
         }
     }
 
-
-    const snake = new Snake({
-        position: {
-            x: Math.floor(Math.random() * cols) * blockSize,
-            y: Math.floor(Math.random() * rows) * blockSize
+    class Food {
+        constructor({ position }) {
+            this.position = position;
         }
-    })
 
-    //蛇身
-    var snakeBody = [[snake.position.x, snake.position.y]]
+        draw() {
+            context.fillStyle = "red"
+            context.fillRect(this.position.x, this.position.y, blockSize, blockSize)
+        }
 
-    //食物
-    var foodX;
-    var foodY;
-
-
+        placeFood() {
+            this.position.x = Math.floor(Math.random() * cols) * blockSize
+            this.position.y = Math.floor(Math.random() * rows) * blockSize
+        }
+    }
 
     addEventListener("keydown", (event) => {
 
-        if (snakeBody.length == 0) {
+        if (snakeBody.length == 1) {
             switch (event.key) {
                 case 'w':
                     snake.velocity.x = 0;
@@ -141,7 +135,7 @@
             }
         }
 
-        if (snakeBody.length > 0) {
+        if (snakeBody.length > 1) {
             switch (event.key) {
                 case 'w':
                     if (snake.velocity.y != 1) {
@@ -174,32 +168,40 @@
         }
     })
 
-
-
-    function update() {
+    function mainLoop() {
 
         if (gameOver) {
             return
         }
-
         context.fillStyle = "black"
         context.fillRect(0, 0, canvas.width, canvas.height)
 
-        context.fillStyle = "red"
-        context.fillRect(foodX, foodY, blockSize, blockSize)
+        food.draw()
 
         snake.update()
-
     }
 
-    function placeFood() {
+    //蛇位置初始化
+    const snake = new Snake({
+        position: {
+            x: Math.floor(Math.random() * cols) * blockSize,
+            y: Math.floor(Math.random() * rows) * blockSize
+        }
+    })
 
-        foodX = Math.floor(Math.random() * cols) * blockSize;
-        foodY = Math.floor(Math.random() * rows) * blockSize;
-    }
+    //食位置物初始化
+    const food = new Food({
+        position: {
+            x: Math.floor(Math.random() * cols) * blockSize,
+            y: Math.floor(Math.random() * rows) * blockSize
+        }
+    })
 
-    placeFood()
+    //蛇身初始化
+    var snakeBody = [[snake.position.x, snake.position.y]]
 
-    setInterval(update, 100);
+    food.placeFood()
+
+    setInterval(mainLoop, 100);
 
 </script>
