@@ -40,6 +40,9 @@
                 x: 0,
                 y: 0
             }
+
+            //蛇身初始化
+            this.body = [[position.x, position.y]]
         }
 
         draw() {
@@ -48,12 +51,13 @@
             context.fillRect(this.position.x, this.position.y, blockSize, blockSize);
 
             //画蛇身
-            for (let i = 0; i < snakeBody.length; i++) {
-                context.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
+            for (let i = 0; i < this.body.length; i++) {
+                context.fillRect(this.body[i][0], this.body[i][1], blockSize, blockSize);
             }
         }
 
         update() {
+
             this.draw();
 
             //蛇撞墙
@@ -67,9 +71,9 @@
             this.position.y += this.velocity.y * blockSize
 
             //蛇撞自己
-            if (snakeBody.length > 1) {
-                for (let i = 1; i < snakeBody.length; i++) {
-                    if (snake.position.x == snakeBody[i][0] && snake.position.y == snakeBody[i][1]) {
+            if (this.body.length > 1) {
+                for (let i = 1; i < this.body.length; i++) {
+                    if (snake.position.x == this.body[i][0] && snake.position.y == this.body[i][1]) {
                         gameOver = true
                         alert("Game Over")
                         console.log("撞自己")
@@ -79,16 +83,16 @@
 
             //蛇吃食物
             if (this.position.x == food.x && this.position.y == food.y) {
-                snakeBody.push([food.x, food.y])
+                this.body.push([food.x, food.y])
                 food.placeFood()
             }
             //更新蛇身位置
-            for (let i = snakeBody.length - 1; i > 0; i--) {
-                snakeBody[i] = snakeBody[i - 1];
+            for (let i = this.body.length - 1; i > 0; i--) {
+                this.body[i] = this.body[i - 1];
             }
             //更新蛇头位置
-            if (snakeBody.length) {
-                snakeBody[0] = [this.position.x, this.position.y];
+            if (this.body.length) {
+                this.body[0] = [this.position.x, this.position.y];
             }
 
         }
@@ -113,7 +117,7 @@
 
     addEventListener("keydown", (event) => {
 
-        if (snakeBody.length == 1) {
+        if (snake.body.length == 1) {
             switch (event.key) {
                 case 'w':
                     snake.velocity.x = 0;
@@ -137,7 +141,7 @@
             }
         }
 
-        if (snakeBody.length > 1) {
+        if (snake.body.length > 1) {
             switch (event.key) {
                 case 'w':
                     if (snake.velocity.y != 1) {
@@ -175,7 +179,7 @@
         if (gameOver) {
             return
         }
-        
+
         context.fillStyle = "black"
         context.fillRect(0, 0, canvas.width, canvas.height)
 
@@ -195,8 +199,7 @@
     //食物位置初始化
     const food = new Food(Math.floor(Math.random() * cols) * blockSize, Math.floor(Math.random() * rows))
 
-    //蛇身初始化
-    var snakeBody = [[snake.position.x, snake.position.y]]
+
 
     food.placeFood()
 
