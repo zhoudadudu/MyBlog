@@ -1,22 +1,29 @@
+<title>Pong</title>
+
 <style>
     body {
-        background: white;
-
-        display: block;
         justify-items: center;
+    }
+
+    a {
+        display: flex;
+        justify-content: center;
+        font-size: 50px;
+        text-decoration: none;
+        color: blue;
     }
 </style>
 
+<h1>Pong</h1>
 <canvas></canvas>
 
-<a href="../index.html"
-    style="display: flex; justify-content: center; font-size: 50px; text-decoration: none; color: blue;">返回首页</a>
+<a href="../index.html">返回首页</a>
 
 <script>
     const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d')
 
-    canvas.width = 512
+    canvas.width = 768
     canvas.height = 512
 
     class Paddle {
@@ -75,13 +82,13 @@
             const bottomSide = this.position.y + this.height
             const topSide = this.position.y
 
-            // 小球碰到左边球拍
+            // 小球碰到左边球拍拍面
             if (leftSide <= paddle1.position.x + paddle1.width && bottomSide >= paddle1.position.y && topSide <= paddle1.position.y + paddle1.height) {
                 this.velocity.x = -this.velocity.x
             }
 
 
-            // 小球碰到右边球拍
+            // 小球碰到右边球拍拍面
             if (rightSide >= paddle2.position.x && bottomSide >= paddle2.position.y && topSide <= paddle2.position.y + paddle2.height) {
                 this.velocity.x = -this.velocity.x
             }
@@ -104,14 +111,14 @@
     const paddle1 = new Paddle({
         position: {
             x: 10,
-            y: 10
+            y: canvas.height / 2 - 50
         },
     })
 
     const paddle2 = new Paddle({
         position: {
             x: canvas.width - 10 * 2,
-            y: 10
+            y: canvas.height / 2 - 50
         },
     })
 
@@ -184,7 +191,5 @@
 
 
     animate()
-
-    // print(ball.position.x)
 
 </script>
