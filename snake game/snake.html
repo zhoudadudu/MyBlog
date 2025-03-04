@@ -33,6 +33,7 @@
     canvas.height = rows * blockSize;
 
     class Snake {
+
         constructor({ position }) {
             this.position = position;
             this.velocity = {
@@ -167,7 +168,7 @@
             }
         }
     })
-
+    //主循环
     function mainLoop() {
 
         if (gameOver) {
@@ -189,7 +190,7 @@
         }
     })
 
-    //食位置物初始化
+    //食物位置初始化
     const food = new Food({
         position: {
             x: Math.floor(Math.random() * cols) * blockSize,

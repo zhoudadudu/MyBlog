@@ -27,33 +27,37 @@
     canvas.height = 512
 
     class Paddle {
-        constructor({ position }) {
-            this.position = position
+        constructor(x, y) {
+            this.x = x
+            this.y = y
+
             this.velocity = {
                 x: 0,
                 y: 0
             }
+
             this.width = 10
             this.height = 100
         }
 
         draw() {
             context.fillStyle = 'white'
-            context.fillRect(this.position.x, this.position.y, this.width, this.height)
+            context.fillRect(this.x, this.y, this.width, this.height)
         }
 
         update() {
             this.draw()
 
-            if (this.position.y + this.velocity.y > 0 //如果速度不为0
-                && this.position.y + this.height + this.velocity.y < canvas.height)//且 位置+面积+速度在画布内
-                this.position.y += this.velocity.y //更新位置
+            if (this.y + this.velocity.y > 0 //如果速度不为0
+                && this.y + this.height + this.velocity.y < canvas.height)//且 位置+面积+速度在画布内
+                this.y += this.velocity.y //更新位置
         }
     }
 
     class Ball {
-        constructor({ position }) {
-            this.position = position
+        constructor(x, y) {
+            this.x = x
+            this.y = y
 
             const speed = 2
             const direction = {
@@ -71,30 +75,30 @@
 
         draw() {
             context.fillStyle = 'white'
-            context.fillRect(this.position.x, this.position.y, this.width, this.height)
+            context.fillRect(this.x, this.y, this.width, this.height)
         }
 
 
         update() {
             this.draw()
-            const rightSide = this.position.x + this.width + this.velocity.x//球右侧
-            const leftSide = this.position.x + this.velocity.x//球左侧
-            const bottomSide = this.position.y + this.height//球底部
-            const topSide = this.position.y//球顶部
+            const rightSide = this.x + this.width + this.velocity.x//球右侧
+            const leftSide = this.x + this.velocity.x//球左侧
+            const bottomSide = this.y + this.height//球底部
+            const topSide = this.y//球顶部
 
             // 小球碰到左边球拍拍面
-            if (leftSide <= paddle1.position.x + paddle1.width && bottomSide >= paddle1.position.y && topSide <= paddle1.position.y + paddle1.height) {
+            if (leftSide <= paddle1.x + paddle1.width && bottomSide >= paddle1.y && topSide <= paddle1.y + paddle1.height) {
                 this.velocity.x = -this.velocity.x
             }
 
 
             // 小球碰到右边球拍拍面
-            if (rightSide >= paddle2.position.x && bottomSide >= paddle2.position.y && topSide <= paddle2.position.y + paddle2.height) {
+            if (rightSide >= paddle2.x && bottomSide >= paddle2.y && topSide <= paddle2.y + paddle2.height) {
                 this.velocity.x = -this.velocity.x
             }
 
             // 小球碰到上下壁
-            if (this.position.y + this.height + this.velocity.y >= canvas.height || this.position.y + this.velocity.y <= 0) {
+            if (this.y + this.height + this.velocity.y >= canvas.height || this.y + this.velocity.y <= 0) {
                 this.velocity.y = -this.velocity.y
             }
 
@@ -104,31 +108,16 @@
             }
 
             //球移动
-            this.position.x += this.velocity.x
-            this.position.y += this.velocity.y
+            this.x += this.velocity.x
+            this.y += this.velocity.y
         }
     }
 
-    const paddle1 = new Paddle({
-        position: {
-            x: 10,
-            y: canvas.height / 2 - 50
-        },
-    })
+    const paddle1 = new Paddle(10, canvas.height / 2 - 50)
 
-    const paddle2 = new Paddle({
-        position: {
-            x: canvas.width - 10 * 2,
-            y: canvas.height / 2 - 50
-        },
-    })
+    const paddle2 = new Paddle(canvas.width - 10 * 2, canvas.height / 2 - 50)
 
-    const ball = new Ball({
-        position: {
-            x: canvas.width / 2,
-            y: canvas.height / 2
-        },
-    })
+    const ball = new Ball(canvas.width / 2, canvas.height / 2)
 
 
     addEventListener('keydown', (event) => {
