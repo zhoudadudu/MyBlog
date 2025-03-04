@@ -28,39 +28,75 @@
     const canvas = document.querySelector('canvas')
     const context = canvas.getContext('2d')
 
-    canvas.height = rows * blockSize;
     canvas.width = cols * blockSize;
+    canvas.height = rows * blockSize;
 
-
-
+    var gameOver = false;
 
     class Snake {
-        constructor({ position, snakeBody }) {
+        constructor({ position }) {
+
             this.position = position;
 
             this.velocity = {
                 x: 0,
                 y: 0
             }
-
-            this.snakeBody = snakeBody;
         }
 
         draw() {
             context.fillStyle = "lime";
+            //画蛇头
             context.fillRect(this.position.x, this.position.y, blockSize, blockSize);
+
+            //画蛇身
+            for (let i = 0; i < snakeBody.length; i++) {
+                context.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
+            }
         }
 
         update() {
-            this.draw()
-            snake.position.x += this.velocity.x * blockSize;
-            snake.position.y += this.velocity.y * blockSize;
+            this.draw();
 
-            for (let i = 0; i < snakeBody.length; i++)
-                context.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
+            //蛇撞墙
+            if (this.position.x < 0 || this.position.x >= cols * blockSize || this.position.y < 0 || this.position.y >= rows * blockSize) {
+                gameOver = true
+                alert("Game Over")
+            }
+
+            //蛇移动
+            this.position.x += this.velocity.x * blockSize
+            this.position.y += this.velocity.y * blockSize
+
+            //蛇撞自己
+            if (snakeBody.length > 1) {
+                for (let i = 1; i < snakeBody.length; i++) {
+                    if (snake.position.x == snakeBody[i][0] && snake.position.y == snakeBody[i][1]) {
+                        gameOver = true
+                        alert("Game Over")
+                        console.log("撞自己")
+                    }
+                }
+            }
+
+
+            //蛇吃食物
+            if (this.position.x == foodX && this.position.y == foodY) {
+                snakeBody.push([foodX, foodY])
+                placeFood()
+            }
+            //更新蛇身位置
+            for (let i = snakeBody.length - 1; i > 0; i--) {
+                snakeBody[i] = snakeBody[i - 1];
+            }
+            //更新蛇头位置
+            if (snakeBody.length) {
+                snakeBody[0] = [this.position.x, this.position.y];
+            }
+
+
         }
     }
-
 
 
     const snake = new Snake({
@@ -68,91 +104,101 @@
             x: Math.floor(Math.random() * cols) * blockSize,
             y: Math.floor(Math.random() * rows) * blockSize
         }
-    });
+    })
 
     //蛇身
-    var snakeBody = [[snake.position.x, snake.position.y]];
-
+    var snakeBody = [[snake.position.x, snake.position.y]]
 
     //食物
     var foodX;
     var foodY;
 
-    var gameOver = false;
 
-    placeFood();
 
     addEventListener("keydown", (event) => {
 
-        if (event.key == "w" && snake.velocity.y != 1) {
-            snake.velocity.x = 0;
-            snake.velocity.y = -1;
+        if (snakeBody.length == 0) {
+            switch (event.key) {
+                case 'w':
+                    snake.velocity.x = 0;
+                    snake.velocity.y = -1;
+                    break
+
+                case 's':
+                    snake.velocity.x = 0;
+                    snake.velocity.y = 1;
+                    break
+
+                case 'a':
+                    snake.velocity.x = -1;
+                    snake.velocity.y = 0;
+                    break
+
+                case 'd':
+                    snake.velocity.x = 1;
+                    snake.velocity.y = 0;
+                    break
+            }
         }
-        else if (event.key == "s" && snake.velocity.y != -1) {
-            snake.velocity.x = 0;
-            snake.velocity.y = 1;
+
+        if (snakeBody.length > 0) {
+            switch (event.key) {
+                case 'w':
+                    if (snake.velocity.y != 1) {
+                        snake.velocity.x = 0;
+                        snake.velocity.y = -1;
+                    }
+                    break
+
+                case 's':
+                    if (snake.velocity.y != -1) {
+                        snake.velocity.x = 0;
+                        snake.velocity.y = 1;
+                    }
+                    break
+
+                case 'a':
+                    if (snake.velocity.x != 1) {
+                        snake.velocity.x = -1;
+                        snake.velocity.y = 0;
+                    }
+                    break
+
+                case 'd':
+                    if (snake.velocity.x != -1) {
+                        snake.velocity.x = 1;
+                        snake.velocity.y = 0;
+                    }
+                    break
+            }
         }
-        else if (event.key == "d" && snake.velocity.x != -1) {
-            snake.velocity.x = 1;
-            snake.velocity.y = 0;
-        }
-        else if (event.key == "a" && snake.velocity.x != 1) {
-            snake.velocity.x = -1;
-            snake.velocity.y = 0;
-        }
-    });
+    })
 
 
 
     function update() {
 
         if (gameOver) {
-            return;
+            return
         }
 
-        context.fillStyle = "black";
-        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = "black"
+        context.fillRect(0, 0, canvas.width, canvas.height)
 
-        context.fillStyle = "red";
-        context.fillRect(foodX, foodY, blockSize, blockSize);
-
-
-        //蛇撞墙
-        if (snake.position.x < 0 || snake.position.x >= cols * blockSize || snake.position.y < 0 || snake.position.y >= rows * blockSize) {
-            gameOver = true;
-            alert("Game Over");
-        }
-
-        //蛇撞自己
-        if (snakeBody.length > 1) {
-            for (let i = 0; i < snakeBody.length; i++) {
-                if (snake.position.x == snakeBody[i][0] && snake.position.y == snakeBody[i][1]) {
-                    gameOver = true;
-                    alert("Game Over");
-
-                    console.log(snakeBody.length)
-                }
-            }
-        }
-
-        if (snake.position.x == foodX && snake.position.y == foodY) {
-            snakeBody.push([foodX, foodY])
-            placeFood();
-        }
-        for (let i = snakeBody.length - 1; i > 0; i--) {
-            snakeBody[i] = snakeBody[i - 1];
-        }
-        if (snakeBody.length) {
-            snakeBody[0] = [snake.position.x, snake.position.y];
-        }
+        context.fillStyle = "red"
+        context.fillRect(foodX, foodY, blockSize, blockSize)
 
         snake.update()
+
     }
 
     function placeFood() {
+
         foodX = Math.floor(Math.random() * cols) * blockSize;
         foodY = Math.floor(Math.random() * rows) * blockSize;
     }
+
+    placeFood()
 
     setInterval(update, 100);
 
