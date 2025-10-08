@@ -9,6 +9,68 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
+        /* 打印样式 */
+        @media print {
+
+            /* 隐藏返回首页链接 */
+            a[href="./index.html"] {
+                display: none !important;
+            }
+
+            /* 确保 body 内容正常显示 */
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            /* 确保容器正常显示 */
+            .container {
+                box-shadow: none !important;
+                margin: 0 !important;
+                padding: 10px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            /* 优化打印时的字体和颜色 */
+            * {
+                color: black !important;
+            }
+
+            /* 修复照片位置问题 */
+            .row {
+                display: flex !important;
+                flex-wrap: nowrap !important;
+            }
+
+            .col-md-8,
+            .col-md-4 {
+                flex: 0 0 auto !important;
+                width: auto !important;
+            }
+
+            .col-md-8 {
+                flex-grow: 1 !important;
+            }
+
+            .text-md-end {
+                text-align: right !important;
+            }
+
+            /* 确保照片在右侧正常显示 */
+            .col-md-4 {
+                align-self: flex-start !important;
+            }
+        }
+
+
+
+
+
+
+
+
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
