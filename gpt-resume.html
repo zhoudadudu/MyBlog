@@ -38,6 +38,7 @@
 
 
 <a href="./index.html">返回首页</a>
+
 <body>
     <div class="container mt-5 mb-5 p-4 shadow rounded bg-white">
         <div class="row align-items-center mb-4">
@@ -80,23 +81,46 @@
                     <strong>安卓pda开发</strong>&nbsp;|&nbsp; 2025<br>
                     <span class="text-muted small">符合mvvm模式的Java/xml传统视图安卓应用开发。</span>
                     <ul class="mb-0">
-                        <li>安卓开发：符合mvvm模式的安卓开发。</li>
-                        <li>第三方库：调用NF5503开发工具包，获取扫描数据，打印标签。</li>
-                        <li>生成二维码：调用zxing库生成二维码。</li>
+                        <li>调用NF5503开发工具包，获取扫描数据，打印标签。</li>
+                        <li>调用zxing库生成二维码。</li>
                     </ul>
                     <div class="timeline-subtitle">技术栈：Java/xml 安卓开发 + NF5503SDK</div>
                 </li>
                 <li class="mb-2">
                     <strong>海康vm二次开发</strong> &nbsp;|&nbsp; 2025<br>
                     <span class="text-muted small">基于海康vm sdk符合mvvm模式的wpf二次开发。供应惠州比亚迪大亚湾厂一期c2五楼。</span>
+                    <ul class="mb-0">
+                        <li> MES对接：使用IHttpClientFactory管理HttpClient，构建表单数据，对接mes。</li>
+                        <li> 第三方库：调用NewtonSoft.json解析json数据。调用LiveChart绘制扇形图。</li>
+                        <li> 保存功能：保存生产日志（csv），保存mes日志（log），保存用户设置（json）。</li>
+                        <li> 调用非托管库：调用WindowsAPI的kernel32库，读取ini文件。</li>
+
+                    </ul>
+                    <div class="timeline-subtitle">技术栈：WPF + 海康SDK调用 + LiveChart 0.9.7 + Newtonsoft.json</div>
                 </li>
                 <li class="mb-2">
                     <strong>批量扫码软件</strong> &nbsp;|&nbsp; 2025<br>
                     <span class="text-muted small">基于wpf框架，收集tcp、usb等扫码器数据并批量上传mes的上位机开发。供应西安草堂比亚迪。</span>
+                    <ul class="mb-0">
+                        <li> 读码器通信：使用TcpClient与网口读码器进行tcp通信。监听键盘获取usb扫码枪数据。</li>
+                        <li> MES对接：使用IHttpClientFactory管理HttpClient，构建json请求，对接MES。</li>
+                        <li> DataGrid实时更新：根据条件，将出错物料位置标红在对应DataGrid格子上。</li>
+                        <li> 保存功能：保存用户操作日志、用户设置。打开软件自动加载设置。</li>
+                        <li> 软件加密：生成截止日期并编码保存，在每次打开软件之前进行日期判断。</li>
+
+
+                    </ul>
+                    <div class="timeline-subtitle">技术栈：WPF + TCP通信 + MES对接 + 文件IO</div>
                 </li>
                 <li class="mb-2">
                     <strong>“电压检测”展示</strong> &nbsp;|&nbsp; 2024<br>
                     <span class="text-muted small">基于wpf框架，收集串口数据，实时绘制折线统计图的上位机开发。</span>
+                    <ul class="mb-0">
+                        <li> 串口通信：异步读取串口数据。</li>
+                        <li> 第三方库：调用LiveChart实时绘制折线图。调用ClosedXML读写excel表格。</li>
+                        <li> 保存功能：保存用户设置，打开软件自动加载设置。</li>
+                    </ul>
+                    <div class="timeline-subtitle">技术栈：WPF + 串口通信 + LiveChart 0.9.7 + CloseXML</div>
                 </li>
             </ul>
         </section>
