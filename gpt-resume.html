@@ -121,10 +121,10 @@
         }
 
         /* 语言切换按钮样式 */
-        #language-switch {
+        #return-switch {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 0px;
+            left: 20px;
             z-index: 1000;
             background-color: #3498db;
             color: white;
@@ -144,10 +144,8 @@
 </head>
 
 <body>
-    <!-- 语言切换按钮 -->
-    <button id="language-switch">English</button>
-    
-    <a href="./index.html">返回首页</a>
+    <!-- 返回首页按钮 -->
+    <a id="return-switch" href="./index.html">返回首页</a>
 
     <div class="container mt-5 mb-5 p-4 shadow rounded bg-white">
         <div class="row align-items-center mb-4">
@@ -335,48 +333,6 @@
             </ul>
         </section>
     </div>
-
-    <script>
-        // 语言切换功能
-        document.addEventListener('DOMContentLoaded', function() {
-            const languageSwitch = document.getElementById('language-switch');
-            let currentLanguage = localStorage.getItem('language') || 'zh';
-            
-            // 初始化语言
-            updateLanguage(currentLanguage);
-            
-            // 切换语言事件
-            languageSwitch.addEventListener('click', function() {
-                currentLanguage = currentLanguage === 'zh' ? 'en' : 'zh';
-                localStorage.setItem('language', currentLanguage);
-                updateLanguage(currentLanguage);
-            });
-            
-            function updateLanguage(lang) {
-                // 更新按钮文本
-                languageSwitch.textContent = lang === 'zh' ? 'English' : '中文';
-                
-                // 更新页面标题
-                document.title = lang === 'zh' ? '个人简历' : 'Resume';
-                
-                // 更新所有带有data-en属性的元素
-                document.querySelectorAll('[data-en]').forEach(element => {
-                    if (lang === 'en') {
-                        // 切换到英文
-                        const originalText = element.textContent;
-                        element.setAttribute('data-zh', originalText); // 保存中文文本
-                        element.textContent = element.getAttribute('data-en');
-                    } else {
-                        // 切换到中文 - 从data-zh属性获取
-                        const zhText = element.getAttribute('data-zh');
-                        if (zhText) {
-                            element.textContent = zhText;
-                        }
-                    }
-                });
-            }
-        });
-    </script>
 </body>
 
 </html>
