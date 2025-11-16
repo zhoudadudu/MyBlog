@@ -20,6 +20,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        .game-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+        }
     </style>
 </head>
 
@@ -35,7 +41,11 @@
 
         <div class="row">
             <div class="col-md-6 col-lg-4 col-xl-3 list-group " v-for="game in games" :key="game.id">
-                <a :href="game.link" class="list-group-item bg-secondary text-light mb-2 rounded p-4">{{ game.name }}</a>
+                <div class="game-card list-group-item text-light mb-2 rounded d-flex flex-column p-4">{{ game.name }}
+
+                    <a :href="game.link" class="btn btn-outline-light w-100">Play Now</a>
+
+                </div>
 
             </div>
         </div>
@@ -44,15 +54,15 @@
 
         <hr class="border-light mt-5">
 
-            <div class="row justify-content-center">
-                <div class="col-md-8 list-group ">
-                    <a href="gpt-resume.html" class="list-group-item bg-secondary text-light mt-3 rounded">Resume</a>
-                </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8 list-group ">
+                <a href="gpt-resume.html" class="list-group-item game-card  text-light mt-3 rounded">Resume</a>
             </div>
+        </div>
 
 
 
-        
+
     </div>
 
 
