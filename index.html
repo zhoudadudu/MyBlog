@@ -33,20 +33,27 @@
         </div>
         <hr class="border-light">
 
-        <div class="row justify-content-center">
-            <div class="col-md-8 list-group" v-for="game in games" :key="game.id">
+        <div class="row">
+            <div class="col-md-6 col-lg-4 col-xl-3 list-group" v-for="game in games" :key="game.id">
                 <a :href="game.link" class="list-group-item bg-secondary text-light mb-2 rounded">{{ game.name }}</a>
 
             </div>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-md-8 list-group ">
-                <a href="gpt-resume.html" class="list-group-item bg-secondary text-light mt-3 rounded">Resume</a>
-            </div>
-        </div>
 
-        <hr class="border-light mt-5">
+
+        <footer class="border-light mt-5">
+
+            <div class="row justify-content-center">
+                <div class="col-md-8 list-group ">
+                    <a href="gpt-resume.html" class="list-group-item bg-secondary text-light mt-3 rounded">Resume</a>
+                </div>
+            </div>
+
+        </footer>
+
+
+        
     </div>
 
 
