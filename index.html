@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <style>
-        body{
+        body {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
         }
 
@@ -26,34 +26,77 @@
 <body id="app" class="bg-dark text-light text-center">
 
     <div class="container py-5">
-        <h1 class="text-center mb-4 display-4 fw-bold hero-title">GameHub of Zico</h1>
-        <p class="lead">A collection of classic and modern games built with passion</p>
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold hero-title">GameHub of Zico</h1>
+            <p class="lead">A collection of classic and modern games built with passion</p>
+
+        </div>
         <hr class="border-light">
 
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="list-group shadow-lg">
-                    <a href="pong/pong.html"
-                        class="list-group-item list-group-item-action bg-secondary text-light mb-2 rounded">Pong</a>
-                    <a href="snake game/snake.html"
-                        class="list-group-item list-group-item-action bg-secondary text-light mb-2 rounded">Snake-Game</a>
-                    <a href="Tetris/Tetris.html"
-                        class="list-group-item list-group-item-action bg-secondary text-light mb-2 rounded">Tetris</a>
-                    <a href="space invaders/index.html"
-                        class="list-group-item list-group-item-action bg-secondary text-light mb-2 rounded">Space Invaders</a>
-                    <a href="fighting-game/game.html"
-                        class="list-group-item list-group-item-action bg-secondary text-light mb-2 rounded">Fighting-Game</a>
-                    <a href="pokemon/index.html"
-                        class="list-group-item list-group-item-action bg-secondary text-light mb-2 rounded">Pokemon</a>
-                        <br>
+            <div class="col-md-8 list-group" v-for="game in games" :key="game.id">
+                <a :href="game.link" class="list-group-item bg-secondary text-light mb-2 rounded">{{ game.name }}</a>
 
-                    <a href="gpt-resume.html" class="list-group-item list-group-item-action bg-secondary text-light mb-2 rounded">Resume</a>
-                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8 list-group ">
+                <a href="gpt-resume.html" class="list-group-item bg-secondary text-light mt-3 rounded">Resume</a>
             </div>
         </div>
 
         <hr class="border-light mt-5">
     </div>
+
+
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            setup() {
+                // 游戏数据
+                const games = [
+                    {
+                        id: 1,
+                        name: "Pong",
+                        link: "pong/pong.html",
+                    },
+                    {
+                        id: 2,
+                        name: "Snake Game",
+                        link: "snake game/snake.html",
+                    },
+                    {
+                        id: 3,
+                        name: "Tetris",
+                        link: "Tetris/Tetris.html",
+                    },
+                    {
+                        id: 4,
+                        name: "Space Invaders",
+                        link: "space invaders/index.html",
+                    },
+                    {
+                        id: 5,
+                        name: "Fighting Game",
+                        link: "fighting-game/game.html",
+                    },
+                    {
+                        id: 6,
+                        name: "Pokemon",
+                        link: "pokemon/index.html",
+                    }
+                ];
+
+
+                return {
+                    games,
+                };
+            }
+        }).mount('#app');
+    </script>
+
+
 </body>
 
 </html>
