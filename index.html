@@ -52,11 +52,23 @@
         </div>
         <hr class="border-light">
 
+
+
+
+
         <div class="row">
             <!-- 使用组件渲染游戏卡片 -->
-            <game-card v-for="game in games" :key="game.id" :game="game">
-            </game-card>
+            <div v-for="game in games" :key="game.id" class="col-md-6 col-lg-4 col-xl-3">
+                <div class="game-card text-light mb-2 rounded d-flex flex-column p-4 border">
+                    <div class="game-icon"><i :class="game.icon"></i></div>
+                    <div class="mb-5">{{ game.name }}</div>
+                    <a :href="game.link" class="btn btn-outline-light w-100">Play Now</a>
+                </div>
+            </div>
         </div>
+
+
+
 
 
 
@@ -74,23 +86,12 @@
     </div>
 
 
+
+
+
     <script>
         const { createApp } = Vue;
 
-
-        // 可复用的 GameCard 组件（局部注册）
-        const GameCard = {
-            props: ['game'],
-            template: `
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="game-card text-light mb-2 rounded d-flex flex-column p-4 border">
-                        <div class="game-icon"><i :class="game.icon"></i></div>
-                        <div class="mb-5">{{ game.name }}</div>
-                        <a :href="game.link" class="btn btn-outline-light w-100">Play Now</a>
-                    </div>
-                </div>
-            `
-        };
 
         const games = [
             {
@@ -129,7 +130,6 @@
 
 
         createApp({
-            components: { GameCard },
             data() {
                 return { games };
             }
