@@ -168,10 +168,8 @@
 
 
 
-    const fps = 60
-    const interval = 1000 / fps
-    const loopId = setInterval(() => {
-
+    function mainLoop() {
+        
         context.fillStyle = 'black'
         context.fillRect(0, 0, canvas.width, canvas.height)
 
@@ -179,14 +177,12 @@
         paddle1.update()
 
         ball.update()
-
-    }, interval)
-
+    }
 
 
-
-
-
+    const fps = 60
+    const interval = 1000 / fps
+    const loopId = setInterval(mainLoop, interval)
 
 
 </script>
