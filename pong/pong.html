@@ -1,24 +1,32 @@
-<title>Pong</title>
+<!DOCTYPE html>
+<html lang="en">
 
-<style>
-    body {
-        display: grid;
-        justify-items: center;
-    }
+<head>
+    <title>Pong</title>
 
-    a {
-        display: flex;
-        justify-content: center;
-        font-size: 50px;
-        text-decoration: none;
-        color: blue;
-    }
-</style>
+    <style>
+        body {
+            display: grid;
+            justify-items: center;
+        }
 
-<h1>Pong</h1>
-<canvas ></canvas>
+        a {
+            display: flex;
+            justify-content: center;
+            font-size: 50px;
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pong</h1>
+    <canvas></canvas>
+</body>
 
 <a href="../index.html">返回首页</a>
+
 
 <script>
     const canvas = document.querySelector('canvas')
@@ -121,6 +129,8 @@
     const ball = new Ball(canvas.width / 2, canvas.height / 2)
 
 
+
+
     addEventListener('keydown', (event) => {
         const speed = 5
         switch (event.key) {
@@ -169,7 +179,7 @@
 
 
     function mainLoop() {
-        
+
         context.fillStyle = 'black'
         context.fillRect(0, 0, canvas.width, canvas.height)
 
@@ -186,3 +196,6 @@
 
 
 </script>
+
+
+</html>
