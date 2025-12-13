@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>GameHub of Zico</title>
-    <!-- 引入 Bootstrap -->
+    <!-- 引入 Bootstrap5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- 引入 Vue 3 -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
     <!-- 引入 Font Awesome 图标 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
 
@@ -93,56 +92,50 @@
             `
         };
 
-
-
-
+        const games = [
+            {
+                id: 1,
+                name: "Pong",
+                link: "pong/pong.html",
+                icon: "fa-solid fa-table-tennis-paddle-ball",
+            },
+            {
+                id: 2,
+                name: "Snake Game",
+                link: "snake game/snake.html",
+                icon: "fas fa-staff-snake",
+            },
+            {
+                id: 3,
+                name: "Tetris",
+                link: "Tetris/Tetris.html",
+                icon: "fas fa-cubes",
+            },
+            {
+                id: 4,
+                name: "Space Invaders",
+                link: "space invaders/index.html",
+                icon: "fas fa-rocket",
+            },
+            {
+                id: 5,
+                name: "Fighting Game",
+                link: "fighting-game/game.html",
+                icon: "fas fa-fist-raised",
+            }
+        ];
 
 
 
 
         createApp({
             components: { GameCard },
-            setup() {
-                // 游戏数据
-                const games = [
-                    {
-                        id: 1,
-                        name: "Pong",
-                        link: "pong/pong.html",
-                        icon: "fa-solid fa-table-tennis-paddle-ball",
-                    },
-                    {
-                        id: 2,
-                        name: "Snake Game",
-                        link: "snake game/snake.html",
-                        icon: "fas fa-staff-snake",
-                    },
-                    {
-                        id: 3,
-                        name: "Tetris",
-                        link: "Tetris/Tetris.html",
-                        icon: "fas fa-cubes",
-                    },
-                    {
-                        id: 4,
-                        name: "Space Invaders",
-                        link: "space invaders/index.html",
-                        icon: "fas fa-rocket",
-                    },
-                    {
-                        id: 5,
-                        name: "Fighting Game",
-                        link: "fighting-game/game.html",
-                        icon: "fas fa-fist-raised",
-                    }
-                ];
-
-
-                return {
-                    games,
-                };
+            data() {
+                return { games };
             }
         }).mount('#app');
+
+
     </script>
 
 
