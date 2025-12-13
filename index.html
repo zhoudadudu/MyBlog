@@ -47,7 +47,7 @@
     <div class="container py-5">
         <div class="text-center mb-5">
             <h1 class="display-4 fw-bold hero-title">GameHub of Zico</h1>
-            <p class="lead">A collection of classic and modern games built with passion</p>
+            <p class="lead">A collection of classic games built with passion</p>
 
         </div>
         <hr class="border-light">
@@ -87,48 +87,45 @@
     <script>
         const { createApp } = Vue;
 
-
-        const games = [
-            {
-                id: 1,
-                name: "Pong",
-                link: "pong/pong.html",
-                icon: "fa-solid fa-table-tennis-paddle-ball",
-            },
-            {
-                id: 2,
-                name: "Snake Game",
-                link: "snake game/snake.html",
-                icon: "fas fa-staff-snake",
-            },
-            {
-                id: 3,
-                name: "Tetris",
-                link: "Tetris/Tetris.html",
-                icon: "fas fa-cubes",
-            },
-            {
-                id: 4,
-                name: "Space Invaders",
-                link: "space invaders/index.html",
-                icon: "fas fa-rocket",
-            },
-            {
-                id: 5,
-                name: "Fighting Game",
-                link: "fighting-game/game.html",
-                icon: "fas fa-fist-raised",
-            }
-        ];
-
-
-
-
         createApp({
-            data() {
-                return { games };
+
+            setup() {
+                const games = [
+                    {
+                        id: 1,
+                        name: "Pong",
+                        link: "pong/pong.html",
+                        icon: "fa-solid fa-table-tennis-paddle-ball",
+                    },
+                    {
+                        id: 2,
+                        name: "Snake Game",
+                        link: "snake game/snake.html",
+                        icon: "fas fa-staff-snake",
+                    },
+                    {
+                        id: 3,
+                        name: "Tetris",
+                        link: "Tetris/Tetris.html",
+                        icon: "fas fa-cubes",
+                    },
+                    {
+                        id: 4,
+                        name: "Space Invaders",
+                        link: "space invaders/index.html",
+                        icon: "fas fa-rocket",
+                    },
+                    {
+                        id: 5,
+                        name: "Fighting Game",
+                        link: "fighting-game/game.html",
+                        icon: "fas fa-fist-raised",
+                    }
+                ];
+
+                return { games }
             }
-        }).mount('#app');
+        }).mount('#app')
 
 
     </script>
