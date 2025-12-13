@@ -1,3 +1,4 @@
+
 class Paddle {
     constructor(x, y) {
         this.x = x
