@@ -66,13 +66,13 @@
             <!-- 使用组件渲染游戏卡片 -->
             <!-- 响应式网格布局 col-md-6 = middle屏一个gamecard占屏幕的6/12，large屏占4/12，extra large屏占3/12-->
             <div v-for="game in games" :key="game.id" class="col-md-6 col-lg-4 col-xl-3">
-                
-                <div class="game-card mb-4 flex-column p-4">
+                <!-- flex-column 让子元素垂直排列  -->
+                <div class="game-card flex-column mb-4 p-4">
                     <div class="game-icon"><i :class="game.icon"></i></div>
                     <div class="mb-5">{{ game.name }}</div>
-                    <!-- 白边框透明背景按钮样式 -->
-                    <a :href="game.link" class="btn btn-outline-light w-100">Play Now <i
-                            class="fas fa-play ms-1"></i></a>
+                    <!-- 白边框透明背景按钮样式  w-100:width-100% 宽度撑满父元素-->
+                     <!-- ms-1:margin start-1 -->
+                    <a :href="game.link" class="btn btn-outline-light w-100">Play Now <i class="fas fa-play ms-1"></i></a>
                 </div>
             </div>
         </div>
