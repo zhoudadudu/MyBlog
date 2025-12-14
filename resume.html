@@ -96,6 +96,15 @@
             padding-left: 30px;
         }
 
+        /* ::befor 伪元素 */
+        /* CSS3 推荐写法（双冒号） */
+        /*element::before      /* 在元素内容前插入虚拟元素 */
+        /*element::after       /* 在元素内容后插入虚拟元素 */
+        /*element::first-line  /* 样式化元素的第一行 */
+        /*element::first-letter /* 样式化元素的第一个字母 */
+        /*element::selection   /* 样式化用户选中的文本 */
+        /*element::placeholder /* 样式化表单的占位符文本 */
+
         .timeline-item:before {
             content: "";
             position: absolute;
