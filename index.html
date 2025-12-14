@@ -43,10 +43,12 @@
 </head>
 
 <body id="app" class="bg-dark text-light text-center">
-
+<!-- container -> 容器类 py-5 = padding-y轴-5个单位长度 -->
     <div class="container py-5">
+        <!-- mb-5 = margin-bottom-5个单位长度 -->
         <div class="text-center mb-5">
             <h1 class="display-4 fw-bold hero-title">GameHub of Zico</h1>
+            <!-- 高亮文字属性 -->
             <p class="lead">A collection of classic games built with passion</p>
 
         </div>
@@ -58,12 +60,18 @@
 
         <div class="row">
             <!-- 使用组件渲染游戏卡片 -->
+             <!-- 响应式 元素宽度 middle屏一个gamecard占屏幕的6/12，large屏占4/12，extra large屏占3/12-->
             <div v-for="game in games" :key="game.id" class="col-md-6 col-lg-4 col-xl-3">
                 <div class="game-card text-light mb-2 rounded d-flex flex-column p-4 border">
                     <div class="game-icon"><i :class="game.icon"></i></div>
                     <div class="mb-5">{{ game.name }}</div>
+<<<<<<< HEAD
                     <a :href="game.link" class="btn btn-outline-light w-100">Play Now <i
                             class="fas fa-play ms-1"></i></a>
+=======
+                    <!-- 白边框透明背景按钮样式 -->
+                    <a :href="game.link" class="btn btn-outline-light w-100">Play Now</a>
+>>>>>>> 427588518c255c2fa1c4ade32565adaf04c9715e
                 </div>
             </div>
         </div>
