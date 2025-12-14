@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        /* 打印样式 */
+        /* @media媒体查询 打印样式 */
         @media print {
 
             /* 隐藏返回首页链接和语言切换按钮 */
@@ -86,7 +86,8 @@
         }
 
         .list-unstyled ul {
-            list-style-type: disc;
+            /* 去掉所有ul元素的实心圆点 */
+            list-style: none;
         }
 
         .timeline-item {
@@ -133,7 +134,7 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 14px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s;
         }
 
@@ -151,40 +152,42 @@
         <div class="row align-items-center mb-4">
             <div class="col-md-8">
                 <h1 class="mb-1 h1">罗梓聪</h1>
+                <!-- break换行符 -->
                 <br>
                 <p class="mb-1"><strong>电话：</strong><span>123-4567-8910</span></p>
                 <p class="mb-1"><strong>邮箱：</strong><span>123456789@qq.com</span></p>
                 <p class="mb-1"><strong>地址：</strong><span>深圳市南山区</span></p>
-                <p class="mb-1"><strong>个人网站：</strong><span>http://zhoudadudu.netlify.app</span></p>
+                <p class="mb-1"><b>个人网站：</b><span>http://zhoudadudu.netlify.app</span></p>
             </div>
             <div class="col-md-4 text-md-end">
                 <!-- <img src="./个人照片.jpg" alt="个人照片" style="width: 100px; height: 150px; object-fit: cover;"> -->
             </div>
         </div>
+        <!-- horizontal rule水平标尺 -->
         <hr>
 
         <section class="mb-4">
             <h2 class="h5">工作经历</h2>
-            <ul class="list-unstyled mb-0">
+            <ul class="list-unstyled ">
                 <li class="mb-2">
-                    <strong>深圳市铂绅科技有限公司</strong> &nbsp;|&nbsp; 
-                    <span>技术开发和售后</span> &nbsp;|&nbsp; 
+                    <strong>深圳市铂绅科技有限公司</strong> &nbsp;|&nbsp;
+                    <span>技术开发和售后</span> &nbsp;|&nbsp;
                     <span>2025.03.20 — 至今</span><br>
                     <span class="text-muted small">
                         上位机开发，并参与售后工作。
                     </span>
                 </li>
                 <li class="mb-2">
-                    <strong>深圳市超思思科技有限公司</strong> &nbsp;|&nbsp; 
-                    <span>软件开发</span> &nbsp;|&nbsp; 
+                    <strong>深圳市超思思科技有限公司</strong> &nbsp;|&nbsp;
+                    <span>软件开发</span> &nbsp;|&nbsp;
                     <span>2024.9.1 — 2024.12.5</span><br>
                     <span class="text-muted small">
                         上位机开发，unity开发，后端服务器开发。
                     </span>
                 </li>
                 <li class="mb-2">
-                    <strong>上海微创深圳分公司</strong> &nbsp;|&nbsp; 
-                    <span>腾讯外包</span> &nbsp;|&nbsp; 
+                    <strong>上海微创深圳分公司</strong> &nbsp;|&nbsp;
+                    <span>腾讯外包</span> &nbsp;|&nbsp;
                     <span>2021.6.7 — 2023.2.20</span><br>
                     <span class="text-muted small">
                         参与《全境封锁·曙光》叙事组策划工作。
@@ -194,11 +197,11 @@
         </section>
         <section class="mb-4">
             <h2 class="h5">项目经验</h2>
-            <ul class="list-unstyled mb-0">
+            <ul class="list-unstyled ">
 
                 <div class="timeline-item">
                     <li class="mb-2">
-                        <strong>智能分拣设备上位机</strong>&nbsp;|&nbsp; 
+                        <strong>智能分拣设备上位机</strong>&nbsp;|&nbsp;
                         <span>2025</span><br>
                         <span class="text-muted small">
                             wpf上位机，对接mes，控制流水线。
@@ -206,7 +209,7 @@
                         <div class="timeline-subtitle">
                             技术栈：WPF + ModbusRTU + SQLite + NLog
                         </div>
-                        <ul class="mb-0">
+                        <ul>
                             <li>
                                 接收网口相机数据，构建Json数据发送给Mes，获取校验结果。
                             </li>
@@ -225,7 +228,7 @@
 
                 <div class="timeline-item">
                     <li class="mb-2">
-                        <strong>安卓pda开发</strong>&nbsp;|&nbsp; 
+                        <strong>安卓pda开发</strong>&nbsp;|&nbsp;
                         <span>2025</span><br>
                         <span class="text-muted small">
                             符合mvvm模式的Java/xml传统视图安卓应用开发。
@@ -233,7 +236,7 @@
                         <div class="timeline-subtitle">
                             技术栈：Java/xml 安卓开发 + NF5503SDK
                         </div>
-                        <ul class="mb-0">
+                        <ul>
                             <li>
                                 调用NF5503开发工具包，获取扫描数据，打印标签。
                             </li>
@@ -246,7 +249,7 @@
 
                 <div class="timeline-item">
                     <li class="mb-2">
-                        <strong>海康vm二次开发</strong> &nbsp;|&nbsp; 
+                        <strong>海康vm二次开发</strong> &nbsp;|&nbsp;
                         <span>2025</span><br>
                         <span class="text-muted small">
                             基于海康vm sdk符合mvvm模式的wpf二次开发。供应惠州比亚迪大亚湾厂一期c2五楼。
@@ -254,7 +257,7 @@
                         <div class="timeline-subtitle">
                             技术栈：WPF + 海康SDK调用 + LiveChart 0.9.7 + Newtonsoft.json
                         </div>
-                        <ul class="mb-0">
+                        <ul>
                             <li>
                                 MES对接：使用IHttpClientFactory管理HttpClient，构建表单数据，对接mes。
                             </li>
@@ -273,7 +276,7 @@
 
                 <div class="timeline-item">
                     <li class="mb-2">
-                        <strong>批量扫码软件</strong> &nbsp;|&nbsp; 
+                        <strong>批量扫码软件</strong> &nbsp;|&nbsp;
                         <span>2025</span><br>
                         <span class="text-muted small">
                             wpf上位机，收集网口/U口扫码器数据并批量上传mes。供应西安草堂比亚迪。
@@ -281,7 +284,7 @@
                         <div class="timeline-subtitle">
                             技术栈：WPF + TCP通信 + 键盘监听 + MES对接 + 文件IO + NLog
                         </div>
-                        <ul class="mb-0">
+                        <ul>
                             <li>
                                 读码器通信：使用TcpClient与网口读码器进行tcp通信。监听键盘获取usb扫码枪数据。
                             </li>
@@ -306,7 +309,7 @@
 
                 <div class="timeline-item">
                     <li class="mb-2">
-                        <strong>"电压检测"显示</strong> &nbsp;|&nbsp; 
+                        <strong>"电压检测"显示</strong> &nbsp;|&nbsp;
                         <span>2024</span><br>
                         <span class="text-muted small">
                             wpf上位机，收集串口数据，实时绘制折线统计图。
@@ -314,7 +317,7 @@
                         <div class="timeline-subtitle">
                             技术栈：WPF + 串口通信 + LiveChart 0.9.7 + CloseXML
                         </div>
-                        <ul class="mb-0">
+                        <ul>
                             <li>
                                 串口通信：异步读取串口数据。
                             </li>
@@ -331,22 +334,22 @@
         </section>
         <section class="mb-4">
             <h2 class="h5">教育背景</h2>
-            <ul class="list-unstyled mb-0">
+            <ul class="list-unstyled ">
                 <li>
-                    <strong>深圳大学继续教育学院</strong> &nbsp;|&nbsp; 
-                    <span>软件工程</span> &nbsp;|&nbsp; 
+                    <strong>深圳大学继续教育学院</strong> &nbsp;|&nbsp;
+                    <span>软件工程</span> &nbsp;|&nbsp;
                     <span>2024 - 2027</span>
                 </li>
                 <li>
-                    <strong>深圳职业技术学院</strong> &nbsp;|&nbsp; 
-                    <span>游戏设计</span> &nbsp;|&nbsp; 
+                    <strong>深圳职业技术学院</strong> &nbsp;|&nbsp;
+                    <span>游戏设计</span> &nbsp;|&nbsp;
                     <span>2017 - 2020</span>
                 </li>
             </ul>
         </section>
         <section class="mb-4">
             <h2 class="h5">技能特长</h2>
-            <ul class="mb-0">
+            <ul>
                 <li>
                     熟练掌握 C#，Java，C/C++基本语法，了解集合，异步，反射等概念
                 </li>
