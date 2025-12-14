@@ -71,9 +71,15 @@
                 <div class="game-card flex-column mb-4 p-4 border">
                     <div class="game-icon"><i :class="game.icon"></i></div>
                     <div class="mb-5">{{ game.name }}</div>
-                    <!-- 白边框透明背景按钮样式  w-100:width-100% 宽度撑满父元素-->
-                     <!-- ms-1:margin start-1 -->
-                    <a :href="game.link" class="btn btn-outline-light w-100">Play Now <i class="fas fa-play ms-1"></i></a>
+
+                    <div>
+
+                        <span class="badge bg-primary mb-2">{{ game.category }}</span>
+
+                        <!-- 白边框透明背景按钮样式  w-100:width-100% 宽度撑满父元素-->
+                         <!-- ms-1:margin start-1 -->
+                        <a :href="game.link" class="btn btn-outline-light w-100">Play Now <i class="fas fa-play ms-1"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -116,30 +122,35 @@
                         id: 1,
                         name: "Pong",
                         link: "pong/pong.html",
+                        category: "Classic",
                         icon: "fa-solid fa-table-tennis-paddle-ball",
                     },
                     {
                         id: 2,
                         name: "Snake Game",
                         link: "snake game/snake.html",
+                        category: "Classic",
                         icon: "fas fa-staff-snake",
                     },
                     {
                         id: 3,
                         name: "Tetris",
                         link: "Tetris/Tetris.html",
+                        category: "Classic",
                         icon: "fas fa-cubes",
                     },
                     {
                         id: 4,
                         name: "Space Invaders",
                         link: "space invaders/index.html",
+                        category: "Classic",
                         icon: "fas fa-rocket",
                     },
                     {
                         id: 5,
                         name: "Fighting Game",
                         link: "fighting-game/game.html",
+                        category: "Classic",
                         icon: "fas fa-fist-raised",
                     }
                 ];
