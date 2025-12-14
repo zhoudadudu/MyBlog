@@ -30,7 +30,7 @@
         }
 
         .game-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
         }
 
@@ -62,7 +62,7 @@
             <!-- 使用组件渲染游戏卡片 -->
              <!-- 响应式 元素宽度 middle屏一个gamecard占屏幕的6/12，large屏占4/12，extra large屏占3/12-->
             <div v-for="game in games" :key="game.id" class="col-md-6 col-lg-4 col-xl-3">
-                <div class="game-card text-light mb-2 rounded d-flex flex-column p-4 border">
+                <div class="game-card text-light mb-4 rounded d-flex flex-column p-4 border">
                     <div class="game-icon"><i :class="game.icon"></i></div>
                     <div class="mb-5">{{ game.name }}</div>
                     <!-- 白边框透明背景按钮样式 -->
