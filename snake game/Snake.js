@@ -57,10 +57,10 @@ class Snake {
         for (let i = this.body.length - 1; i > 0; i--) {
             this.body[i] = this.body[i - 1];
         }
+
         //更新蛇头位置
-        if (this.body.length) {
-            this.body[0] = [this.position.x, this.position.y];
-        }
+        this.body[0] = [this.position.x, this.position.y];
+
 
     }
 }
