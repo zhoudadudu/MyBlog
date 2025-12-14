@@ -17,10 +17,14 @@
         }
 
         .hero-title {
+            /* 渐变色背景 */
             background: linear-gradient(90deg, #4cc9f0, #f72585);
+            /* 把背景剪裁成文字的形状 */
             background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            /* 文字变透明 */
+            color: transparent;
+            /* -webkit-background-clip: text; */
+            /* -webkit-text-fill-color: transparent; */
         }
 
         .game-card {
@@ -43,7 +47,7 @@
 </head>
 
 <body id="app" class="bg-dark text-light text-center">
-<!-- container -> 容器类 py-5 = padding-y轴-5个单位长度 -->
+<!-- container = 容器类; py-5 = padding-y轴-5个单位长度 -->
     <div class="container py-5">
         <!-- mb-5 = margin-bottom-5个单位长度 -->
         <div class="text-center mb-5">
