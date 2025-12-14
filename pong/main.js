@@ -1,4 +1,3 @@
-// import { Ball } from './Ball.js';
 
 
 const canvas = document.querySelector('canvas')
