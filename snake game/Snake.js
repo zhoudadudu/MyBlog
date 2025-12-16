@@ -49,17 +49,18 @@ class Snake {
 
         //蛇吃食物
         if (this.position.x == food.x && this.position.y == food.y) {
+            // 增加蛇身长度
             this.body.push([food.x, food.y])
             food.placeFood()
         }
-        //更新蛇身位置
+        //每帧更新蛇身位置
         for (let i = this.body.length - 1; i > 0; i--) {
             this.body[i] = this.body[i - 1];
         }
+
         //更新蛇头位置
-        if (this.body.length) {
-            this.body[0] = [this.position.x, this.position.y];
-        }
+        this.body[0] = [this.position.x, this.position.y];
+
 
     }
 }
