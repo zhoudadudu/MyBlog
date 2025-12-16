@@ -63,15 +63,17 @@
 
 
         <!-- bootstrap网格布局属性 row -->
-        <div class="row">
+        <div class="row g-4">
             <!-- 使用组件渲染游戏卡片 -->
             <!-- 响应式网格布局 col-md-6 = middle屏一个gamecard占屏幕的6/12，large屏占4/12，extra large屏占3/12-->
             <div v-for="game in games" :key="game.id" class="col-md-6 col-lg-4 col-xl-3">
-                <!-- flex-column 让子元素垂直排列  -->
-                <div class="game-card flex-column mb-4 p-4 border">
-                    <div class="game-icon"><i :class="game.icon"></i></div>
-                    <div class="mb-5">{{ game.name }}</div>
 
+                <!-- flex-column 让子元素垂直排列  -->
+                <div class="game-card text-light p-4 border">
+
+                    <div class="game-icon"><i :class="game.icon"></i></div>
+
+                    <h5 class="card-title mb-5">{{ game.name }}</h5>
                     <!-- <p class="card-text flex-grow-1">{{ game.description }}</p> -->
 
                     <div>
@@ -83,6 +85,7 @@
                         <a :href="game.link" class="btn btn-outline-light w-100">Play Now <i
                                 class="fas fa-play ms-1"></i></a>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -125,7 +128,7 @@
                     {
                         id: 1,
                         name: "Pong",
-                        description: "The game that launched the video game industry, created by Atari in 1972.",
+                        description: "Created by Atari in 1972.",
                         link: "pong/pong.html",
                         category: "Classic",
                         icon: "fa-solid fa-table-tennis-paddle-ball",
@@ -149,7 +152,7 @@
                     {
                         id: 4,
                         name: "Space Invaders",
-                        description: "Caused a shortage of 100 yen coins, created by Taito in 1978.",
+                        description: "Created by Taito in 1978.",
                         link: "space invaders/index.html",
                         category: "Classic",
                         icon: "fas fa-rocket",
